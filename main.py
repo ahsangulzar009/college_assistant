@@ -109,15 +109,14 @@ def response_node(state: State):
   response = llm.invoke(prompt)
   return {"messages": [("ai", response.content.strip())]}
 
-  #step 4 - router function 
-
+#step-4 -> Router Function 
 def route_query(state:State):
-    if state['query_type'] == 'academic':
-      return "academic_rag"
-    elif state['query_type'] == "fee":
-      return "fee_rag"
-    else:
-      return "general"
+  if state['query_type'] == 'academic':
+    return "academic_rag"
+  elif state['query_type'] == "fee":
+    return "fee_rag"
+  else:
+    return "general"
 
 graph = StateGraph(State)
 
